@@ -10,6 +10,7 @@ import useRentModal from '@/app/hooks/useRentModal';
 
 import Modal from './Modal';
 import CategoryInputBox from '../inputs/CategoryInputBox';
+import CountrySelect from '../inputs/CountrySelect';
 import { categories } from '../navbar/Categories';
 import Heading from '../Heading';
 
@@ -50,6 +51,7 @@ const RentModal = () => {
     },
   });
 
+  const location = watch('location');
   const category = watch('category');
 
   const setCustomValue = (id: string, value: any) => {
@@ -134,6 +136,21 @@ const RentModal = () => {
       </div>
     </div>
   );
+
+  if (step === STEPS.LOCATION) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Where is your place located?"
+          subtitle="Help guests find you!"
+        />
+        <CountrySelect
+          value={location}
+          onChange={(value) => setCustomValue('location', value)}
+        />
+      </div>
+    );
+  }
 
   return (
     <Modal
