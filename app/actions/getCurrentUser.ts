@@ -7,7 +7,7 @@ export async function getSession() {
   return await getServerSession(authOptions);
 }
 
-export const getCurrentUser = async () => {
+export default async function getCurrentUser() {
   try {
     // this is a direct communication with the database through a server component
     const session = await getSession();
@@ -35,4 +35,4 @@ export const getCurrentUser = async () => {
   } catch (error: any) {
     return null;
   }
-};
+}
