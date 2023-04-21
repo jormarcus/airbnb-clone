@@ -37,6 +37,8 @@ export default async function getListings(params: IListingsParams) {
 
     if (roomCount) {
       query.roomCount = {
+        // greater than or equal to
+        // use the plus to convert the string to a num
         gte: +roomCount,
       };
     }
